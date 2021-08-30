@@ -22,8 +22,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<MyModel>(context);
@@ -87,7 +85,38 @@ class MyHomePage extends StatelessWidget {
                   ),
                 ),
               ],
-            )
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Divider(),
+            SizedBox(
+              height: 30,
+            ),
+            Text(
+              'Seekbar',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
+            ),
+            Container(
+                margin: EdgeInsets.symmetric(horizontal: 80),
+                child: Consumer<MyModel>(
+                  builder: (context, data, child) {
+                    return Slider(
+                        value: provider.slide.toDouble(),
+                        min: 1,
+                        max: 100,
+                        divisions: 100,
+                        activeColor: Colors.green,
+                        inactiveColor: Colors.grey,
+                        label: '${provider.slide}',
+                        onChanged: (double newValue) {
+                          provider.sliderData(newValue);
+                        },
+                        semanticFormatterCallback: (double newValue) {
+                          return '${newValue.round()}';
+                        });
+                  },
+                ))
           ],
         ),
       ),
