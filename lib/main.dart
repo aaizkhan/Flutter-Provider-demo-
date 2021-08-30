@@ -98,7 +98,7 @@ class MyHomePage extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
             ),
             Container(
-                margin: EdgeInsets.symmetric(horizontal: 80),
+                margin: EdgeInsets.symmetric(horizontal: 50),
                 child: Consumer<MyModel>(
                   builder: (context, data, child) {
                     return Slider(
